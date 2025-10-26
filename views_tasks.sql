@@ -18,3 +18,11 @@ JOIN dept_emp de ON s.emp_no = de.emp_no
 JOIN departments d ON de.dept_no = d.dept_no
 WHERE s.to_date = '9999-01-01'
 GROUP BY d.dept_name;
+
+-- 4. View showing employees in the 'Sales' department
+CREATE OR REPLACE VIEW v_sales AS
+SELECT e.emp_no, e.first_name, e.last_name, d.dept_name
+FROM employees e
+JOIN dept_emp de ON e.emp_no = de.emp_no
+JOIN departments d ON de.dept_no = d.dept_no
+WHERE d.dept_name = 'Sales' AND de.to_date = '9999-01-01';
