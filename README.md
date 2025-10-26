@@ -26,11 +26,3 @@ Contains view creation tasks:
 4. View showing employees working in the 'Sales' department  
 
 ---
-
-## ⚙️ Database
-These scripts use the [MySQL Employees Database](https://github.com/datacharmer/test_db).
-
-To load the database:
-```bash
-mysql -u root -p < employees.sql
-# sql_problems_join_union
