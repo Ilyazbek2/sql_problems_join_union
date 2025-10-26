@@ -40,3 +40,13 @@ FROM employees e
 WHERE e.emp_no IN (
     SELECT emp_no FROM dept_emp WHERE to_date <> '9999-01-01'
 );
+
+-- 5. Average salary comparison: Managers vs Employees
+CREATE OR REPLACE VIEW v_salary_comparison AS
+SELECT 'Менеджер' AS type, AVG(s.salary) AS avg_salary
+FROM salaries s
+WHERE s.emp_no IN (SELECT emp_no FROM dept_manager)
+UNION
+SELECT 'Обычный сотрудник' AS type, AVG(s.salary) AS avg_salary
+FROM salaries s
+WHERE s.emp_no NOT IN (SELECT emp_no FROM dept_manager);
